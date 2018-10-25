@@ -34,11 +34,26 @@ class CountElement {
 
 		return $this->getCountRecursion($string, ++$position, $count);
 	}
+
+	public function getCountRecursionByNumber($number, $count)
+	{
+		if($number == 0) return $count;
+	
+		if($number%10 == 0)
+		{
+			++$count;
+		}
+
+		$new = floor($number/10);
+	
+		return $this->getCountRecursionByNumber($new, $count);
+	}
 }
 
 
 $result = new CountElement;
 
 // $result->getCountIterative(1001001111, 0);
-$anss = $result->getCountRecursion("1001001111", 0, 0);
+// $anss = $result->getCountRecursion("1001001111", 0, 0);
+$anss = $result->getCountRecursionByNumber(1001001111, 0);
 var_dump($anss);
